@@ -27,7 +27,12 @@ app.get('/api/data/volume', async function (req, res) {
     res.status(200).send(data.volume.toString());
 });
 
-app.get('/api/data/price', async function (req, res) {
+app.get('/api/data/usd', async function (req, res) {
     let data = JSON.parse(fs.readFileSync('data.json', 'utf8'))
-    res.status(200).send(data.price.toString());
+    res.status(200).send(data.usd.toString());
+});
+
+app.get('/api/data/eth', async function (req, res) {
+    let data = JSON.parse(fs.readFileSync('data.json', 'utf8'))
+    res.status(200).send(data.eth.toString());
 });
