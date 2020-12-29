@@ -19,6 +19,7 @@
     "babel-register": "^6.26.0",
     "bignumber.js": "^9.0.1",
     "dotenv": "^8.2.0",
+    "ethers": "^5.0.24",
     "express": "^4.16.2",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
