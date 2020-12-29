@@ -28,15 +28,17 @@ export async function pullData(): Promise < void > {
         const daoSupply = await vybeContract.balanceOf("0x9E6a97d3a65BFd1dDC6D15025f985eBc9c8f2b0A");
 
         const cirWithoutLock = totalRawSupply.sub(lockedSupply);
-        const cirWithoutDAO = cirWithoutLock.sub(daoSupply);
-        const circulatingSupply = Number(ethers.utils.formatUnits(cirWithoutDAO, 18)).toFixed(0);;
+        const circulatingSupply = Number(ethers.utils.formatUnits(cirWithoutLock, 18)).toFixed(0);;
+
+        const marketCap = Number(circulatingSupply * usdPrice).toFixed(0);
 
         const current_data = {
             usd: usdPrice,
             eth: ethPrice,
             volume,
             total_supply: totalSupply,
-            circulating_supply: circulatingSupply
+            circulating_supply: circulatingSupply,
+            market_cap: marketCap
         };
         fs.writeFileSync((__dirname, 'data.json'), JSON.stringify(current_data));
     } catch (err) {
